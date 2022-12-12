@@ -16,19 +16,19 @@ app.use(function(req, res, next) {
   next()
 });
 
-
 app.post('/checkout', async function(req, res) {
   try {
+    const parameters = new URLSearchParams(req.body)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
         {
-          price: req.body.priceId,
+          price: parameters.get("priceId"),
           quantity: 1,
         },
       ],
       mode: 'payment',
-      client_reference_id: req.body.client_reference_id,
+      client_reference_id: parameters.get("client_reference_id"),
       success_url: 'https://ihcappointments.uk/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://ihcappointments.uk',
     })
@@ -46,3 +46,4 @@ app.listen(3000, function() {
 // to port it to AWS Lambda we will create a wrapper around that will load the app from
 // this file
 module.exports = app
+

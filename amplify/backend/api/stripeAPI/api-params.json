@@ -19,8 +19,8 @@
   "privacy": {
     "auth": 0,
     "unauth": 0,
-    "authRoleName": "amplify-ihcappointments-dev-180934-authRole",
-    "unAuthRoleName": "amplify-ihcappointments-dev-180934-unauthRole"
+    "authRoleName": "amplify-ihcappointments-dev-231807-authRole",
+    "unAuthRoleName": "amplify-ihcappointments-dev-231807-unauthRole"
   },
   "dependsOn": [
     {
