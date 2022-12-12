@@ -1,35 +1,55 @@
 {
-  "paths": [
-    {
-      "name": "/checkout",
-      "lambdaFunction": "stripeCheckout",
-      "privacy": {
-        "open": true
-      },
-      "policyResourceName": "/checkout"
-    }
-  ],
-  "resourceName": "stripeAPI",
-  "apiName": "stripeAPI",
-  "functionArns": [
-    {
-      "lambdaFunction": "stripeCheckout"
-    }
-  ],
-  "privacy": {
-    "auth": 0,
-    "unauth": 0,
-    "authRoleName": "amplify-ihcappointments-dev-231807-authRole",
-    "unAuthRoleName": "amplify-ihcappointments-dev-231807-unauthRole"
-  },
-  "dependsOn": [
-    {
-      "category": "function",
-      "resourceName": "stripeCheckout",
-      "attributes": [
-        "Name",
-        "Arn"
-      ]
-    }
-  ]
+    "paths": [
+        {
+            "name": "/checkout",
+            "lambdaFunction": "stripeCheckout",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/checkout"
+        },
+        {
+            "name": "/webhook",
+            "lambdaFunction": "stripeHook",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/webhook"
+        }
+    ],
+    "resourceName": "stripeAPI",
+    "apiName": "stripeAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "stripeCheckout"
+        },
+        {
+            "lambdaFunction": "stripeHook"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-ihcappointments-dev-231807-authRole",
+        "unAuthRoleName": "amplify-ihcappointments-dev-231807-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "stripeCheckout",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeHook",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "47f97328"
 }

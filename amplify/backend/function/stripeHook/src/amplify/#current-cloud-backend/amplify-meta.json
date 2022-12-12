@@ -1,0 +1,69 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ihcappointments-dev-231807-authRole",
+      "UnauthRoleArn": "arn:aws:iam::928825183520:role/amplify-ihcappointments-dev-231807-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::928825183520:role/amplify-ihcappointments-dev-231807-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-ihcappointments-dev-231807-deployment",
+      "UnauthRoleName": "amplify-ihcappointments-dev-231807-unauthRole",
+      "StackName": "amplify-ihcappointments-dev-231807",
+      "StackId": "arn:aws:cloudformation:eu-west-1:928825183520:stack/amplify-ihcappointments-dev-231807/18831e00-b8f0-11eb-ae55-0636a8dde20b",
+      "AmplifyAppId": "d1bb9mrs0gd9o6"
+    }
+  },
+  "function": {
+    "stripeCheckout": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [],
+      "lastBuildTimeStamp": "2021-05-19T23:06:43.641Z",
+      "lastPackageTimeStamp": "2021-05-19T23:06:44.381Z",
+      "distZipFilename": "stripeCheckout-466153506e444c6a5271-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ihcappointments-dev-231807-deployment",
+        "s3Key": "amplify-builds/stripeCheckout-466153506e444c6a5271-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ihcappointments-dev-231807-deployment/amplify-cfn-templates/function/stripeCheckout-cloudformation-template.json",
+        "logicalId": "functionstripeCheckout"
+      },
+      "lastPushTimeStamp": "2021-05-19T23:07:48.694Z",
+      "output": {
+        "Region": "eu-west-1",
+        "Arn": "arn:aws:lambda:eu-west-1:928825183520:function:stripeCheckout-dev",
+        "Name": "stripeCheckout-dev",
+        "LambdaExecutionRole": "ihcappointmentsLambdaRole5c0d7efe-dev"
+      },
+      "lastPushDirHash": "6pnIDVLGZYhLko8X2KiBg3w7xLw="
+    }
+  },
+  "api": {
+    "stripeAPI": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "stripeCheckout",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ihcappointments-dev-231807-deployment/amplify-cfn-templates/api/stripeAPI-cloudformation-template.json",
+        "logicalId": "apistripeAPI"
+      },
+      "lastPushTimeStamp": "2021-05-19T23:07:48.691Z",
+      "output": {
+        "ApiName": "stripeAPI",
+        "RootUrl": "https://m4om5ue7ka.execute-api.eu-west-1.amazonaws.com/dev",
+        "ApiId": "m4om5ue7ka"
+      },
+      "lastPushDirHash": "q5tVCEbo69j1tWn77INr/vRxQOA="
+    }
+  }
+}

@@ -1,13 +1,12 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-var url = require('url')
 var express = require('express')
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
 // declare a new express app
 var app = express()
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
@@ -19,16 +18,17 @@ app.use(function(req, res, next) {
 
 app.post('/checkout', async function(req, res) {
   try {
+    const parameters = new URLSearchParams(req.body)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
         {
-          price: req.body.priceId,
+          price: parameters.get("priceId"),
           quantity: 1,
         },
       ],
       mode: 'payment',
-      client_reference_id: req.body.client_reference_id,
+      client_reference_id: parameters.get("client_reference_id"),
       success_url: 'https://ihcappointments.uk/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://ihcappointments.uk',
     })
