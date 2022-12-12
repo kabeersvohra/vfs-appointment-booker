@@ -1,30 +1,32 @@
-// Create an instance of the Stripe object with your publishable API key
-var stripe = Stripe(
+// import { API } from "aws-amplify"
+// import { loadStripe } from "@stripe/stripe-js"
+
+const stripePromise = Stripe(
 	'pk_test_51Ij84jEpmt8X7qxvCy2iNNTvfo5HFaP7r62WEycE6cbabSrIKKaOi9bZ8y4dzaROUVU4yspyLoMNrDs6uamPQpjW00PkhPpSnI'
 );
+
 var checkoutButton = document.getElementById('passport-renewal-button');
 
-checkoutButton.addEventListener('click', function() {
-	// Create a new Checkout Session using the server-side endpoint you
-	// created in step 3.
-	fetch('https://zv3xlrogmd.execute-api.eu-west-1.amazonaws.com/Stage', {
-		method: 'POST',
-	})
-	.then(function(response) {
-		return response.json();
-	})
-	.then(function(session) {
-		return stripe.redirectToCheckout({ sessionId: session.id });
-	})
-	.then(function(result) {
-		// If `redirectToCheckout` fails due to a browser or network
-		// error, you should display the localized error message to your
-		// customer using `error.message`.
-		if (result.error) {
-			alert(result.error.message);
+checkoutButton.addEventListener('click', async function() {
+	const fetchSession = async() => {
+		const apiName = "stripeAPI"
+		// const apiEndpoint = "/checkout"
+		const apiEndpoint = "https://afykk8twq3.execute-api.eu-west-1.amazonaws.com/dev/checkout"
+		const body = {
+			client_reference_id: "UniqueString",
+			line_items: [{
+				priceId: "price_1IstJLEpmt8X7qxvs8lUvRKy",
+				quantity: 1,
+			}],
+			mode: "payment",
 		}
-	})
-	.catch(function(error) {
-		console.error('Error:', error);
-	});
+		// const session = await API.post(apiName, apiEndpoint, {body})
+		const session = await $.post(apiEndpoint, body).promise()  
+		return session
+	}
+
+	const session = await fetchSession()
+	const sessionId = session.id
+	const stripe = await stripePromise
+	stripe.redirectToCheckout({sessionId})
 });
