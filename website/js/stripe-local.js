@@ -11,14 +11,10 @@ checkoutButton.addEventListener('click', async function() {
 	const fetchSession = async() => {
 		const apiName = "stripeAPI"
 		// const apiEndpoint = "/checkout"
-		const apiEndpoint = "https://afykk8twq3.execute-api.eu-west-1.amazonaws.com/dev/checkout"
+		const apiEndpoint = "https://m4om5ue7ka.execute-api.eu-west-1.amazonaws.com/dev/checkout"
 		const body = {
 			client_reference_id: "UniqueString",
-			line_items: [{
-				priceId: "price_1IstJLEpmt8X7qxvs8lUvRKy",
-				quantity: 1,
-			}],
-			mode: "payment",
+			priceId: "price_1IstJLEpmt8X7qxvs8lUvRKy",
 		}
 		// const session = await API.post(apiName, apiEndpoint, {body})
 		const session = await $.post(apiEndpoint, body).promise()  
