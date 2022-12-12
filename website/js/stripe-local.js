@@ -7,7 +7,7 @@ var checkoutButton = document.getElementById('passport-renewal-button');
 checkoutButton.addEventListener('click', function() {
 	// Create a new Checkout Session using the server-side endpoint you
 	// created in step 3.
-	fetch('https://zv3xlrogmd.execute-api.eu-west-1.amazonaws.com/prod', {
+	fetch('https://zv3xlrogmd.execute-api.eu-west-1.amazonaws.com/Stage', {
 		method: 'POST',
 	})
 	.then(function(response) {
