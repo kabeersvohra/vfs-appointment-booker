@@ -15,7 +15,7 @@
       "function": {
         "stripeCheckout": {
           "deploymentBucketName": "amplify-ihcappointments-dev-180934-deployment",
-          "s3Key": "amplify-builds/stripeCheckout-6b78556972743745736e-build.zip"
+          "s3Key": "amplify-builds/stripeCheckout-4d544f37384167492f70-build.zip"
         }
       }
     }
