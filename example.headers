@@ -1,0 +1,18 @@
+POST /appointment_inter.php HTTP/1.1
+Host: www.hcilondon.gov.in
+Connection: keep-alive
+Content-Length: 311
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+Origin: https://www.hcilondon.gov.in
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://www.hcilondon.gov.in/appointment.php?date=13&month=05&year=2021&apttype=Submission&locationid=12&serviceid=9
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Cookie: PHPSESSID=0nfeo0adinbmiuci9evoc779i3; tntcon=47257279d0b4f033e373b16e65f8f089a4xn
